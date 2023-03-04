@@ -8,3 +8,8 @@ variable "vpc_subnet_id" {
   description = "VPC subnet network id"
   type        = string
 }
+
+variable "instance_zone" {
+  type        = string
+  default     = "ru-central1-a"
+}

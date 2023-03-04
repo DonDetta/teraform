@@ -26,6 +26,7 @@ provider "yandex" {
   folder_id                = "b1g3v95jc7takhl2hhpa"
   zone                     = "ru-central1-a"
 }
+
 #делаем сеть и подсети
 resource "yandex_vpc_network" "network-1" {
   name        = "network-1"
@@ -50,12 +51,14 @@ module "ya_instance_1" {
   source                = "./modules/instance"
   instance_family_image = "lemp"
   vpc_subnet_id         = yandex_vpc_subnet.subnet-1.id
+  instance_zone         = "ru-central1-a"
 }
 
 module "ya_instance_2" {
   source                = "./modules/instance"
   instance_family_image = "lamp"
   vpc_subnet_id         = yandex_vpc_subnet.subnet-2.id
+  instance_zone         = "ru-central1-b"
 }
 
 #Создаем балансировщика

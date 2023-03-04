@@ -12,8 +12,8 @@ data "yandex_compute_image" "my_image" {
 }
 
 resource "yandex_compute_instance" "vm" {
+  zone = var.instance_zone
   name = "terraform-${var.instance_family_image}"
-
   resources {
     cores  = 2
     memory = 2
